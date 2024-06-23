@@ -25,12 +25,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y openssh-client sshpass
 
       - name: copy files to VPS
-        run: sshpass -p $VPS_PASSWORD scp -o StrictHostKeyChecking=no -r .$VPS_USER@VPS_HOST:$APP_PATH
+        run: sshpass -p $VPS_PASSWORD scp -o StrictHostKeyChecking=no -r . $VPS_USER@VPS_HOST:$APP_PATH
 
       - name: Deploy using docker-compose
         run: |
-          sshpass -p $VPS_PASSWORD ssh -o StrictHostKeyChecking=no ./ $VPS_USER@VPS_HOST << 'EOF'
+          sshpass -p $VPS_PASSWORD ssh -o StrictHostKeyChecking=no $VPS_USER@VPS_HOST << 'EOF'
   	        cd $APP_PATH
-  	        docker-compose down
             docker-compose up-d
           EOF
