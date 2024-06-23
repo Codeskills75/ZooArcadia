@@ -28,8 +28,8 @@ jobs:
         run: sshpass -p $VPS_PASSWORD scp -o StrictHostKeyChecking=no -r . $VPS_USER@VPS_HOST:$APP_PATH
 
       - name: Deploy using docker-compose
-        run: | 
-          sshpass -p $VPS_PASSWORD ssh -o StrictHostKeyChecking=no $VPS_USER@VPS_HOST << 'EOF'
-  	        cd $APP_PATH
-            docker-compose up-d
+        run: |
+          sshpass -p $VPS_PASSWORD ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
+            cd $APP_PATH
+            docker-compose up -d
           EOF
