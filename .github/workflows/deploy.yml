@@ -10,7 +10,7 @@ env:
   VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
   VPS_HOST: ${{ secrets.VPS_HOST }}
   VPS_PORT: ${{ secrets.VPS_PORT }}
-  APP_PATH: /zoo-arcadia
+  APP_PATH: zoo-arcadia
   DOCKER_COMPOSE_FILE: docker-compose.yml
 
 jobs:
