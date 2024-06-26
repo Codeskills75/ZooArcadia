@@ -30,7 +30,7 @@ jobs:
 
       - name: Deploy using docker-compose
         run: |
-          sshpass -p $VPS_PASSWORD ssh -P $VPS_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
+          sshpass -p $VPS_PASSWORD ssh -p $VPS_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
             cd $APP_PATH
             docker-compose up -d
           EOF
