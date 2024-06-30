@@ -10,7 +10,7 @@ env:
   VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
   VPS_HOST: ${{ secrets.VPS_HOST }}
   VPS_PORT: ${{ secrets.VPS_PORT }}
-  APP_PATH: /zoo-arcadia
+  APP_PATH: zoo-arcadia
   DOCKER_COMPOSE_FILE: docker-compose.yml
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
       - name: Deploy using docker-compose
         run: |
           sshpass -p $VPS_PASSWORD ssh -p $VPS_PORT -o StrictHostKeyChecking=no -T $VPS_USER@$VPS_HOST << 'EOF'
-            cd $APP_PATH
+            cd /$APP_PATH
             pwd
             docker compose up -d
           EOF
